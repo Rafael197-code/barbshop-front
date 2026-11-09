@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #1d2c55;
+  --color-navy-deep: #141f40;
+  --color-tint: #e9ecf3;
+  --color-red: #c9342e;
+  --color-red-deep: #ad2b26;
+  --color-paper: #f4f5f7;
+  --color-ink: #202431;
+  --color-muted: #5e6577;
+  --color-line: #dde1e8;
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-title);
+
+  --shadow-card: 0 1px 2px rgb(29 44 85 / 0.06), 0 6px 16px rgb(29 44 85 / 0.07);
+}
+
+@layer base {
+  html {
+    @apply bg-paper text-ink;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid #1d2c55;
+    outline-offset: 2px;
+  }
+
+  .on-navy :focus-visible {
+    outline-color: #ffffff;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border border-line bg-white shadow-card;
+  }
+
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-md px-5 text-base font-semibold transition-colors active:translate-y-px disabled:cursor-not-allowed disabled:opacity-55;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3 text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-navy text-white hover:bg-navy-deep;
+  }
+
+  .btn-accent {
+    @apply bg-red text-white hover:bg-red-deep;
+  }
+
+  .btn-outline {
+    @apply border border-navy bg-white text-navy hover:bg-tint;
+  }
+
+  .btn-outline-light {
+    @apply border border-white/40 bg-transparent text-white hover:bg-white/10;
+  }
+
+  .btn-quiet {
+    @apply border border-line bg-white text-muted hover:border-red hover:text-red-deep;
+  }
+}
+
+.stripes {
+  background-image: repeating-linear-gradient(
+    135deg,
+    #c9342e 0 8px,
+    #ffffff 8px 16px,
+    #1d2c55 16px 24px,
+    #ffffff 24px 32px
+  );
+}
+
+.ruler {
+  height: 16px;
+  background-image:
+    linear-gradient(90deg, currentColor 1px, transparent 1px),
+    linear-gradient(90deg, currentColor 1px, transparent 1px);
+  background-size:
+    24px 16px,
+    12px 8px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
